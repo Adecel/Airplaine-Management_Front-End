@@ -62,7 +62,7 @@
       },
       getCusomterByID() {
         axios
-          .get(`http://localhost:7000/flight-line/read/${this.customerId}`)
+          .get(`http://localhost:7000/api/flight-line/read/${this.customerId}`)
           .then((response) => {
             this.flghtLine = response.data;
           })
@@ -73,7 +73,7 @@
       update() {
         axios
           .put(
-            `http://localhost:7000/flight-line/update/${this.customerId}`,
+            `http://localhost:7000/api/flight-line/update/${this.customerId}`,
             this.flghtLine
           )
           .then((response) => {

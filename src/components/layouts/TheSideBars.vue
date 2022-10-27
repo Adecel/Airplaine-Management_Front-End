@@ -52,39 +52,39 @@ export default {
           icon: "fa fa-list-ul"       
         },
         {
-          href: "/user-contat",
-          title: "Contact",
+          href: "/user-contact",
+          title: "User Contact",
           icon: "fa fa-list-ul"       
         },
+        // {
+        //   href: "/user-role",
+        //   title: "User Role",
+        //   icon: "fa fa-list-ul"       
+        // },
+        // {
+        //   href: "/role",
+        //   title: "Role",
+        //   icon: "fa fa-list-ul"       
+        // },
         {
-          href: "/user-role",
-          title: "User Role",
+          href: "/tikect",
+          title: "Tikect",
           icon: "fa fa-list-ul"       
         },
+        // {
+        //   href: "/line",
+        //   title: "Tikect",
+        //   icon: "fa fa-list-ul"       
+        // },
+        // {
+        //   href: "/hostess",
+        //   title: "Hostess",
+        //   icon: "fa fa-list-ul"       
+        // },
         {
-          href: "/role",
-          title: "Role",
-          icon: "fa fa-list-ul"       
-        },
-        {
-          href: "/tiket",
-          title: "Tiket",
-          icon: "fa fa-list-ul"       
-        },
-        {
-          href: "/line",
-          title: "Tiket",
-          icon: "fa fa-list-ul"       
-        },
-        {
-          href: "/hostess",
-          title: "Hostess",
-          icon: "fa fa-list-ul"       
-        },
-        {
-          href: "/flight-pilot",
+          href: "/pilot",
           title: "Pilot",
-          icon: "fa fa-list-ul"       
+          icon: "fa fa-user"       
         },
 
         

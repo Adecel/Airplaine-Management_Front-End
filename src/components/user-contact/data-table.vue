@@ -23,14 +23,7 @@
             <b-col cols="2">
               <b-row>
                 <b-col>
-                  <b-button
-                    variant="primary"
-                    id="show-btn"
-                    @click="showCreateModal"
-                  >
-                    <b-icon-plus class="text-white"></b-icon-plus>
-                    <span class="h6 text-white">New  user contact</span>
-                  </b-button>
+                
                 </b-col>
               </b-row>
             </b-col>
@@ -82,34 +75,9 @@
       </b-row>
   
       <!-- Modal for adding new customers -->
-      <b-modal
-        ref="create-customer-modal"
-        size="xl"
-        hide-footer
-        title="New Customer"
-      >
-        <create-form
-          @closeCreateModal="closeCreateModal"
-          @reloadDataTable="getCustomerData"
-          @showSuccessAlert="showAlertCreate"
-        ></create-form>
-      </b-modal>
+     
   
-      <!-- Modal for updating customers -->
-      <b-modal
-        ref="edit-customer-modal"
-        size="xl"
-        hide-footer
-        title="Edit Customer"
-      >
-        <edit-form
-          @closeEditModal="closeEditModal"
-          @reloadDataTable="getCustomerData"
-          @showSuccessAlert="showAlertUpdate"
-          :customerId="customerId"
-        ></edit-form>
-      </b-modal>
-  
+    
       <!-- Delete Customer Modal -->
       <b-modal
         ref="delete-customer-modal"
@@ -130,8 +98,6 @@
   <script>
   import axios from "axios";
   import Overview from "./Overview.vue";
-  import CreateForm from "./CreateForm.vue";
-  import EditForm from "./EditForm.vue";
   import DeleteModal from "./DeleteModal.vue";
   import LayoutDefault from "@/layouts/LayoutDefault.vue";
 
@@ -139,8 +105,6 @@
   export default {
     components: {
       Overview,
-      CreateForm,
-      EditForm,
       DeleteModal,
       LayoutDefault
     
@@ -161,15 +125,30 @@
             sortable: false,
           },
           {
-            key: "model",
-            label: "Model",
+            key: "user.name.middleName",
+            label: "Middle Name",
             sortable: false,
           },
           {
-            key: "name",
-            label: "Name",
+            key: "user.name.lastName",
+            label: "Last Name",
+            sortable: false,
+          },  {
+            key: "user.gender.gender",
+            label: "Gender",
             sortable: false,
           },
+          {
+            key: "contactType.email",
+            label: "Email",
+            sortable: false,
+          },
+          {
+            key: "contactType.phoneNumber",
+            label: "Phone Number",
+            sortable: false,
+          },
+          
           "actions",
         ],
         items: [],
@@ -195,9 +174,9 @@
       },
       getCustomerData() {
         axios
-          .get("http://localhost:7000/user-contact/findAll")
+          .get("http://localhost:7000/api/user-contact/findAll")
           .then((response) => {
-            this.tableHeader = "Total Customer";
+            this.tableHeader = "Total ";
             this.items = response.data;
             this.numberOfCustomers = response.data.length;
           
@@ -206,19 +185,16 @@
             console.log(error);
           });
       },
-      getRowData(id) {
-        this.$refs["edit-customer-modal"].show();
-        this.customerId = id;
-      },
+    
       closeEditModal() {
         this.$refs["edit-customer-modal"].hide();
       },
       setFilterTotalIsActive() {
-        this.tableHeader = "Total Plane";
+        this.tableHeader = "Total ";
         this.getCustomerData();
       },
       setFilterActiveIsActive() {
-        this.tableHeader = "Active Plane";
+        this.tableHeader = "Active ";
         this.items = this.activeCustomersData;
       },
       showAlertCreate() {

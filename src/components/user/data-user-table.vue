@@ -175,7 +175,7 @@
           },
           {
             key: "gender.description",
-            label: "Description:",
+            label: "Description",
             sortable: false,
           },
           "actions",
@@ -203,9 +203,9 @@
       },
       getCustomerData() {
         axios
-          .get("http://localhost:7000/user/findAll")
+          .get("http://localhost:7000/api/user/findAll")
           .then((response) => {
-            this.tableHeader = "Total Customer";
+            this.tableHeader = "Total ";
             this.items = response.data;
             console.log(response.data[0].gender.gender)
             this.numberOfCustomers = response.data.length;
@@ -232,11 +232,11 @@
       },
       showAlertCreate() {
         this.showSuccessAlert = true;
-        this.alertMessage = "Customer was created successfully!";
+        this.alertMessage = "user was created successfully!";
       },
       showAlertUpdate() {
         this.showSuccessAlert = true;
-        this.alertMessage = "Customer was updated successfully";
+        this.alertMessage = "user was updated successfully";
       },
       showDeleteModal(id) {
         this.$refs["delete-customer-modal"].show();
@@ -247,7 +247,7 @@
       },
       showDeleteSuccessModal() {
         this.showSuccessAlert = true;
-        this.alertMessage = "Customer was deleted successfully!";
+        this.alertMessage = "user was deleted successfully!";
       },
     },
   };

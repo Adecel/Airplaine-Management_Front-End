@@ -1,5 +1,5 @@
 <template>
-
+<layout-default>
 
     <div>
         <!-- <HeaderBar/> -->
@@ -9,10 +9,10 @@
         </b-alert>
       </b-row>
       <b-row>
-        <customer-overview
+        <overview
           :totalCustomers="numberOfCustomers"
           :activeCustomers="activeCustomers"
-        ></customer-overview>
+        ></overview>
       </b-row>
       <b-row class="mt-3">
         <b-card>
@@ -23,14 +23,14 @@
             <b-col cols="2">
               <b-row>
                 <b-col>
-                  <b-button
+                  <!-- <b-button
                     variant="primary"
                     id="show-btn"
                     @click="showCreateModal"
                   >
                     <b-icon-plus class="text-white"></b-icon-plus>
                     <span class="h6 text-white">New Customer</span>
-                  </b-button>
+                  </b-button> -->
                 </b-col>
               </b-row>
             </b-col>
@@ -61,11 +61,7 @@
               <template #cell(actions)="data">
                 <b-row>
                   <b-col cols="7">
-                    <b-icon-pencil-square
-                      class="action-item"
-                      variant="primary"
-                      @click="getRowData(data.item.id)"
-                    ></b-icon-pencil-square>
+                 
                   </b-col>
                 <b-col cols="1">
                     <b-icon-trash-fill
@@ -81,34 +77,7 @@
         </b-card>
       </b-row>
   
-      <!-- Modal for adding new customers -->
-      <b-modal
-        ref="create-customer-modal"
-        size="xl"
-        hide-footer
-        title="New Customer"
-      >
-        <create-customer-form
-          @closeCreateModal="closeCreateModal"
-          @reloadDataTable="getCustomerData"
-          @showSuccessAlert="showAlertCreate"
-        ></create-customer-form>
-      </b-modal>
-  
-      <!-- Modal for updating customers -->
-      <b-modal
-        ref="edit-customer-modal"
-        size="xl"
-        hide-footer
-        title="Edit Customer"
-      >
-        <edit-customer-form
-          @closeEditModal="closeEditModal"
-          @reloadDataTable="getCustomerData"
-          @showSuccessAlert="showAlertUpdate"
-          :customerId="customerId"
-        ></edit-customer-form>
-      </b-modal>
+     
   
       <!-- Delete Customer Modal -->
       <b-modal
@@ -117,31 +86,29 @@
         hide-footer
         title="Confirm Deletion"
       >
-        <delete-customer-modal
+        <delete-modal
           @closeDeleteModal="closeDeleteModal"
           @reloadDataTable="getCustomerData"
           @showDeleteAlert="showDeleteSuccessModal"
           :customerId="customerId"
-        ></delete-customer-modal>
+        ></delete-modal>
       </b-modal>
-    </div>
+    </div></layout-default>
   </template>
   
   <script>
   import axios from "axios";
-  import CustomerOverview from "@/components/CustomerOverview.vue";
-  import CreateCustomerForm from "@/components/CreateCustomerForm.vue";
-  import EditCustomerForm from "@/components/EditCustomerForm.vue";
-  import DeleteCustomerModal from "@/components/DeleteCustomerModal.vue";
-  import HeaderBar from "@/components/DeleteCustomerModal.vue";
+  import Overview from "./Overview.vue";
+
+  import DeleteModal from "./DeleteModal.vue";
+import LayoutDefault from '@/layouts/LayoutDefault.vue';
   
   export default {
     components: {
-      CustomerOverview,
-      CreateCustomerForm,
-      EditCustomerForm,
-      DeleteCustomerModal,
-      HeaderBar
+      Overview,
+
+      DeleteModal,
+        LayoutDefault,
     },
     data() {
       return {
@@ -154,18 +121,44 @@
             sortable: false,
           },
           {
-            key: "capacity",
-            label: "Capacity",
+            key: "user.id",
+            label: "User Id",
             sortable: false,
           },
           {
-            key: "model",
-            label: "Model",
+            key: "user.name.firstName",
+            label: " User First Name",
             sortable: false,
           },
           {
-            key: "name",
-            label: "Name",
+            key: "user.name.lastName",
+            label: "User Last Name",
+            sortable: false,
+          },
+          ,
+          {
+            key: "flightLine.id",
+            label: "flight Line Id",
+            sortable: false,
+          },
+          {
+            key: "flightLine.departure",
+            label: "flight Line Departure",
+            sortable: false,
+          },
+          {
+            key: "seatNumber",
+            label: "flight Line Departure",
+            sortable: false,
+          },
+          {
+            key: "price",
+            label: "flight Line Departure",
+            sortable: false,
+          },
+          {
+            key: "luggage",
+            label: "flight Line Departure",
             sortable: false,
           },
           "actions",
@@ -193,9 +186,9 @@
       },
       getCustomerData() {
         axios
-          .get("http://localhost:7000/plane/findAll")
+          .get("http://localhost:7000/api/ticket/findAll")
           .then((response) => {
-            this.tableHeader = "Total Customer";
+            this.tableHeader = "Total ";
             this.items = response.data;
             this.numberOfCustomers = response.data.length;
           

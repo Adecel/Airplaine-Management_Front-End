@@ -91,7 +91,7 @@
       },
       getCusomterByID() {
         axios
-          .get(`http://localhost:7000/user/read/${this.customerId}`)
+          .get(`http://localhost:7000/api/user/read/${this.customerId}`)
           .then((response) => {
             this.user = response.data;
           })
@@ -102,7 +102,7 @@
       updateCustomer() {
         axios
           .put(
-            `http://localhost:7000/user/update/${this.customerId}`,
+            `http://localhost:7000/api/user/update/${this.customerId}`,
             this.user
           )
           .then((response) => {

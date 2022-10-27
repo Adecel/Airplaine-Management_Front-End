@@ -189,9 +189,9 @@
       },
       getCustomerData() {
         axios
-          .get("http://localhost:7000/contact/findAll")
+          .get("http://localhost:7000/api/contact/findAll")
           .then((response) => {
-            this.tableHeader = "Total Customer";
+            this.tableHeader = "Total ";
             this.items = response.data;
             this.numberOfCustomers = response.data.length;
           

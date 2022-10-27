@@ -10,7 +10,7 @@
             }"
             @click="totalCustomersIsActiveFilter"
           >
-            <h6>Total Planes</h6>
+            <h6>Total </h6>
             <h4>
               <strong>{{ totalCustomers }}</strong>
             </h4>
@@ -25,7 +25,7 @@
             }"
             @click="activeCustomersIsActiveFilter"
           >
-            <h6 class="text-secondary">Active Plane</h6>
+            <h6 class="text-secondary">Active </h6>
             <h4>
               <strong>{{ activeCustomers }}</strong>
             </h4>

@@ -56,7 +56,7 @@
       },
       addNewFlghtLiner() {
         axios
-          .post("http://localhost:7000/flight-line/save", this.flghtLine)
+          .post("http://localhost:7000/api/flight-line/save", this.flghtLine)
           .then((response) => {
             console.log(response.data);
             this.$emit("closeCreateModal");

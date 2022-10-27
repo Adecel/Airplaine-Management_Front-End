@@ -155,7 +155,7 @@
           },
           {
             key: "departureDateAndTime",
-            label: "",
+            label: "Departure Date And Time",
             sortable: false,
           },
           {
@@ -227,6 +227,7 @@
         axios
           .get("http://localhost:7000/api/flight/findAll")
           .then((response) => {
+
             this.tableHeader = "Total Customer";
             this.items = response.data;
             this.numberOfCustomers = response.data.length;

@@ -15,11 +15,11 @@
           </b-form-group>
         </b-col>
         <b-col cols="6">
-          <b-form-group id="model" label="model" label-for="model">
+          <b-form-group id="escription" label="escription" label-for="escription">
             <b-form-input
-              id="model"
+              id="escription"
               type="text"
-              placeholder="model"
+              placeholder="escription"
               v-model="contact.description"
             ></b-form-input>
           </b-form-group>
@@ -56,7 +56,7 @@
       },
       addNewCustomer() {
         axios
-          .post("http://localhost:7000/contact/save", this.contact)
+          .post("http://localhost:7000/api/contact/save", this.contact)
           .then((response) => {
             console.log(response.data);
             this.$emit("closeCreateModal");

@@ -38,7 +38,7 @@
       },
       removeCustomerFromData() {
         axios
-          .delete(`http://localhost:7000/user/delete/${this.customerId}`)
+          .delete(`http://localhost:7000/api/user/delete/${this.customerId}`)
           .then(() => {
             this.$emit("reloadDataTable");
             this.$emit("showDeleteAlert");

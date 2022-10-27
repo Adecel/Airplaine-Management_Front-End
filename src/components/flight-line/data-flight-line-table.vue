@@ -188,9 +188,9 @@
       },
       getCustomerData() {
         axios
-          .get("http://localhost:7000/flight-line/findAll")
+          .get("http://localhost:7000/api/flight-line/findAll")
           .then((response) => {
-            this.tableHeader = "Total Customer";
+            this.tableHeader = "Total ";
             this.items = response.data;
             this.numberOfCustomers = response.data.length;
           

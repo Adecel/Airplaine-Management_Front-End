@@ -10,22 +10,18 @@
     <b-collapse id="nav-collapse" is-nav>
       <b-navbar-nav class="ml-auto text-center">
      
-        <b-nav-item v-if="isLogin" :to="{ path: '/Taskboard' }" >Airplaine magements</b-nav-item>
+        <b-nav-item v-if="isLogin" :to="{ path: '/Taskboard' }" class="mr-1  " >Airplaine magements</b-nav-item>
 
         
       </b-navbar-nav>
 
       <!-- Right aligned nav items -->
       <b-navbar-nav class="ml-auto">
-          <router-link v-if="!isLogin" to="/login"><button class="btn btn-danger text-center">Login</button></router-link> -->
+          <router-link v-if="!isLogin" to="/login"><button class="btn btn-danger text-center">Login</button></router-link> 
         <div v-if="isLogin &&users">
-         <b-dropdown type="dark" class="mr-3"  variant="ligth">
-        <template #button-content>   
-        <b-avatar  src="https://decider.com/wp-content/uploads/2016/06/homer.jpg?quality=90&strip=all&w=646&h=431&crop=1" class="mr-1"></b-avatar><span class="text-warning">{{users.name}} {{users.surname}}</span> 
-      </template>
-       <b-dropdown-item ><b-nav-item ><button  @click="logout" class="btn btn-light ">Logout</button></b-nav-item></b-dropdown-item>
-     </b-dropdown>
-         
+        </b-nav-item>
+     <button  @click="logout" class="btn btn-light mr-5">Logout</button>
+
           </div>
       </b-navbar-nav>
     </b-collapse>
@@ -64,5 +60,8 @@ export default {
 }
 </script>
 <style >
-
+/* .logout{
+  float:right;
+  
+} */
 </style>

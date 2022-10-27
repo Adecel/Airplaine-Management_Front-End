@@ -1,6 +1,6 @@
 <template>
 
-
+<layout-default>
     <div>
         <!-- <HeaderBar/> -->
       <b-row>
@@ -9,10 +9,10 @@
         </b-alert>
       </b-row>
       <b-row>
-        <customer-overview
+        <overview
           :totalCustomers="numberOfCustomers"
           :activeCustomers="activeCustomers"
-        ></customer-overview>
+        ></overview>
       </b-row>
       <b-row class="mt-3">
         <b-card>
@@ -88,11 +88,11 @@
         hide-footer
         title="New Customer"
       >
-        <create-customer-form
+        <create-form
           @closeCreateModal="closeCreateModal"
           @reloadDataTable="getCustomerData"
           @showSuccessAlert="showAlertCreate"
-        ></create-customer-form>
+        ></create-form>
       </b-modal>
   
       <!-- Modal for updating customers -->
@@ -102,12 +102,12 @@
         hide-footer
         title="Edit Customer"
       >
-        <edit-customer-form
+        <edit-form
           @closeEditModal="closeEditModal"
           @reloadDataTable="getCustomerData"
           @showSuccessAlert="showAlertUpdate"
           :customerId="customerId"
-        ></edit-customer-form>
+        ></edit-form>
       </b-modal>
   
       <!-- Delete Customer Modal -->
@@ -117,31 +117,33 @@
         hide-footer
         title="Confirm Deletion"
       >
-        <delete-customer-modal
+        <delete-modal
           @closeDeleteModal="closeDeleteModal"
           @reloadDataTable="getCustomerData"
           @showDeleteAlert="showDeleteSuccessModal"
           :customerId="customerId"
-        ></delete-customer-modal>
+        ></delete-modal>
       </b-modal>
     </div>
+    </layout-default>
   </template>
   
   <script>
   import axios from "axios";
-  import CustomerOverview from "@/components/CustomerOverview.vue";
-  import CreateCustomerForm from "@/components/CreateCustomerForm.vue";
-  import EditCustomerForm from "@/components/EditCustomerForm.vue";
-  import DeleteCustomerModal from "@/components/DeleteCustomerModal.vue";
-  import HeaderBar from "@/components/DeleteCustomerModal.vue";
+  import Overview from "./Overview.vue";
+  import CreateForm from "./CreateForm.vue";
+  import EditForm from "./EditForm.vue";
+  import DeleteModal from "./DeleteModal.vue";
+  import LayoutDefault from "@/layouts/LayoutDefault.vue";
   
   export default {
     components: {
-      CustomerOverview,
-      CreateCustomerForm,
-      EditCustomerForm,
-      DeleteCustomerModal,
-      HeaderBar
+      Overview,
+      CreateForm,
+      EditForm,
+      DeleteModal,
+      LayoutDefault
+
     },
     data() {
       return {
@@ -154,18 +156,33 @@
             sortable: false,
           },
           {
-            key: "capacity",
-            label: "Capacity",
+            key: "name.firstName",
+            label: "FirstName",
             sortable: false,
           },
           {
-            key: "model",
-            label: "Model",
+            key: "name.middleName",
+            label: "MiddleName",
             sortable: false,
           },
           {
-            key: "name",
-            label: "Name",
+            key: "name.lastName",
+            label: "LastName",
+            sortable: false,
+          },
+          {
+            key: "gender.gender",
+            label: "Gender",
+            sortable: false,
+          },
+          {
+            key: "gender.description",
+            label: "Description",
+            sortable: false,
+          },
+          {
+            key: "phoneNumber",
+            label: "Tel",
             sortable: false,
           },
           "actions",
@@ -193,7 +210,7 @@
       },
       getCustomerData() {
         axios
-          .get("http://localhost:7000/plane/findAll")
+          .get("http://localhost:7000/api/pilot/findAll")
           .then((response) => {
             this.tableHeader = "Total Customer";
             this.items = response.data;

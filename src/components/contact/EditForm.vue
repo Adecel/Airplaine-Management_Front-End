@@ -62,7 +62,7 @@
       },
       getCusomterByID() {
         axios
-          .get(`http://localhost:7000/contact/read/${this.customerId}`)
+          .get(`http://localhost:7000/api/contact/read/${this.customerId}`)
           .then((response) => {
             this.contact = response.data;
           })
@@ -73,7 +73,7 @@
       update() {
         axios
           .put(
-            `http://localhost:7000/contact/update/${this.customerId}`,
+            `http://localhost:7000/api/contact/update/${this.customerId}`,
             this.contact
           )
           .then((response) => {
