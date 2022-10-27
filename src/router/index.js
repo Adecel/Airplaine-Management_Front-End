@@ -12,6 +12,9 @@ import UserContact from "@/components/user-contact/data-table.vue"
 import Flight from "@/components/flight/data-table.vue"
 import Tikect from "@/components/tickect/data-table.vue"
 import Pilot from "@/components/pilot/data-table.vue"
+import Hostess from "@/components/hostess/data-table.vue"
+
+
 
 
 
@@ -32,6 +35,21 @@ const routes = [
     meta:{needAuth:true},
     beforeEnter: ifAuthenticated
   },
+  ,
+  {
+    path: "/hostess",
+    name: "Hostess",
+    component: Hostess,
+    meta:{needAuth:true},
+    beforeEnter: ifAuthenticated
+  },
+  {
+    path: "/pilot",
+    name: "Pilot",
+    component: Pilot,
+    meta:{needAuth:true},
+    beforeEnter: ifAuthenticated
+  },
   
   {
     path: "/flight-line",
@@ -42,7 +60,7 @@ const routes = [
   },
   {
     path: "/flight",
-    name: "Flight ",
+    name: "Fligh ",
     component: Flight ,
     meta:{needAuth:true},
     beforeEnter: ifAuthenticated
@@ -51,13 +69,6 @@ const routes = [
     path: "/tikect",
     name: "Tikect ",
     component: Tikect ,
-    meta:{needAuth:true},
-    beforeEnter: ifAuthenticated
-  },
-  {
-    path: "/pilot",
-    name: "Pilot ",
-    component: Pilot ,
     meta:{needAuth:true},
     beforeEnter: ifAuthenticated
   },

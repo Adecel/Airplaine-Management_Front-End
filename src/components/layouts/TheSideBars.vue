@@ -56,36 +56,23 @@ export default {
           title: "User Contact",
           icon: "fa fa-list-ul"       
         },
-        // {
-        //   href: "/user-role",
-        //   title: "User Role",
-        //   icon: "fa fa-list-ul"       
-        // },
-        // {
-        //   href: "/role",
-        //   title: "Role",
-        //   icon: "fa fa-list-ul"       
-        // },
+    
         {
           href: "/tikect",
           title: "Tikect",
           icon: "fa fa-list-ul"       
         },
-        // {
-        //   href: "/line",
-        //   title: "Tikect",
-        //   icon: "fa fa-list-ul"       
-        // },
-        // {
-        //   href: "/hostess",
-        //   title: "Hostess",
-        //   icon: "fa fa-list-ul"       
-        // },
         {
           href: "/pilot",
           title: "Pilot",
-          icon: "fa fa-user"       
+          icon: "fa fa-list-ul"       
         },
+      
+        {
+          href: "/hostess",
+          title: "Hostess",
+          icon: "fa fa-list-ul"       
+        }
 
         
       ],
