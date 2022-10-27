@@ -15,9 +15,10 @@ export default {
   },
 };
 </script>>
-<style lang="scss" >
+<style lang="scss" >x
 body {
-  background-attachment: fixed;
-  margin: 0;
+   background-attachment: fixed;
+   background: blue;
+   margin: 0;
 }
 </style>

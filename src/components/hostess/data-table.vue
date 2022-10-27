@@ -28,7 +28,7 @@
                       @click="showCreateModal"
                     >
                       <b-icon-plus class="text-white"></b-icon-plus>
-                      <span class="h6 text-white">New pilot</span>
+                      <span class="h6 text-white">New hostess</span>
                     </b-button>
                   </b-col>
                 </b-row>
@@ -85,7 +85,7 @@
           ref="create-customer-modal"
           size="xl"
           hide-footer
-          title="New Pilot"
+          title="New hostess"
         >
           <create-form
             @closeCreateModal="closeCreateModal"
@@ -99,7 +99,7 @@
           ref="edit-customer-modal"
           size="xl"
           hide-footer
-          title="Edit Customer"
+          title="Edit hostess"
         >
           <edit-form
             @closeEditModal="closeEditModal"
@@ -211,7 +211,7 @@
           axios
             .get("http://localhost:7000/api/hostess/findAll")
             .then((response) => {
-              this.tableHeader = "Total Pilot";
+              this.tableHeader = "Total ";
               this.items = response.data;
               this.numberOfCustomers = response.data.length;
             
@@ -228,20 +228,20 @@
           this.$refs["edit-customer-modal"].hide();
         },
         setFilterTotalIsActive() {
-          this.tableHeader = "Total Pilot";
+          this.tableHeader = "Total hostess ";
           this.getCustomerData();
         },
         setFilterActiveIsActive() {
-          this.tableHeader = "Active Pilot";
+          this.tableHeader = "Active hostess ";
           this.items = this.activeCustomersData;
         },
         showAlertCreate() {
           this.showSuccessAlert = true;
-          this.alertMessage = "Pilot was created successfully!";
+          this.alertMessage = "hostess  was created successfully!";
         },
         showAlertUpdate() {
           this.showSuccessAlert = true;
-          this.alertMessage = "Pilot was updated successfully";
+          this.alertMessage = "hostess  was updated successfully";
         },
         showDeleteModal(id) {
           this.$refs["delete-customer-modal"].show();
@@ -252,7 +252,7 @@
         },
         showDeleteSuccessModal() {
           this.showSuccessAlert = true;
-          this.alertMessage = "Pilot was deleted successfully!";
+          this.alertMessage = "hostess  was deleted successfully!";
         },
       },
     };

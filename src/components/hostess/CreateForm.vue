@@ -74,7 +74,7 @@
     <b-row class="mt-4">
       <b-col cols="3">
         <b-button variant="primary" class="px-5" @click="addNewCustomer"
-          >Add Plane</b-button
+          >Add hostess</b-button
         >
       </b-col>
       <b-col>
@@ -100,7 +100,7 @@ export default {
     },
     addNewCustomer() {
       axios
-        .post("http://localhost:7000/api/pilot/save", this.hostess)
+        .post("http://localhost:7000/api/hostess/save", this.hostess)
         .then((response) => {
           console.log(response.data);
           this.$emit("closeCreateModal");

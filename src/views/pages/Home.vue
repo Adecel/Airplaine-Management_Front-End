@@ -4,7 +4,7 @@
   <div class="row">
     <div class="col-sm frontend-side ">
      <div class="frontend-side-text"> 
-     <button class="btn  btn-outline-secondary "><h5>I A PASSENGER</h5></button> </div>
+     </div>
     </div>
     <div class="col-sm uiux-side ">     
       <div class="uiux-side-text"> 

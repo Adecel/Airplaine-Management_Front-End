@@ -114,9 +114,13 @@
     },
   };
 </script>
-<style lang="css" scoped>
+<style lang="css" >
+body{
+  background: blue;
+}
 .box{
   margin-top:100px;
+  background: blue;
 }
 </style>
 

@@ -2,7 +2,7 @@
     <b-form class="mt-3">
       <b-row>
       <b-row>
-        <h4 class="text-secondary">Plane Details </h4>
+        <h4 class="text-secondary">Hostess Details </h4>
       </b-row>
       <b-col cols="6">
         <b-form-group id="firstName" label="firstName " label-for="firstName">
@@ -10,7 +10,7 @@
             id="firstName"
             type="text"
             placeholder="firstName"
-            v-model="pilot.name.firstName"
+            v-model="hostess.name.firstName"
           ></b-form-input>
         </b-form-group>
       </b-col>
@@ -20,7 +20,7 @@
             id="lastName"
             type="text"
             placeholder="Last Name"
-            v-model="pilot.name.lastName"
+            v-model="hostess.name.lastName"
           ></b-form-input>
         </b-form-group>
       </b-col>
@@ -32,7 +32,7 @@
             id="middleName"
             type="text"
             placeholder="Middle Name"
-            v-model="pilot.name.middleName"
+            v-model="hostess.name.middleName"
           ></b-form-input>
         </b-form-group>
       </b-col>
@@ -42,7 +42,7 @@
             id="description"
             type="text"
             placeholder="Description"
-            v-model="pilot.gender.description"
+            v-model="hostess.gender.description"
           ></b-form-input>
         </b-form-group>
       </b-col>
@@ -54,7 +54,7 @@
             id="gender"
             type="text"
             placeholder="gender"
-            v-model="pilot.gender.gender"
+            v-model="hostess.gender.gender"
           ></b-form-input>
         </b-form-group>
       </b-col>
@@ -64,11 +64,12 @@
             id="phoneNumber"
             type="text"
             placeholder="Phone Number"
-            v-model="pilot.phoneNumber"
+            v-model="hostess.phoneNumber"
           ></b-form-input>
         </b-form-group>
       </b-col>
     </b-row>
+    
       <b-row class="mt-4">
         <b-col cols="3">
           <b-button variant="primary" class="px-5" @click="updateCustomer"
@@ -88,11 +89,11 @@
   export default {
     name: "CreateCustomerModal",
     props: {
-      customerId: Number,
+      customerId:String,
     },
     data() {
       return {
-        pilot: {},
+        hostess: { name:{},gender:{},},
       };
     },
     mounted() {
@@ -105,9 +106,9 @@
       },
       getCusomterByID() {
         axios
-          .get(`http://localhost:7000/api/pilot/read/${this.customerId}`)
+          .get(`http://localhost:7000/api/hostess/read/${this.customerId}`)
           .then((response) => {
-            this.pilot = response.data;
+            this.hostess = response.data;
           })
           .catch((error) => {
             console.log(error);
@@ -116,8 +117,8 @@
       updateCustomer() {
         axios
           .put(
-            `http://localhost:7000/api/pilot/update/${this.customerId}`,
-            this.pilot
+            `http://localhost:7000/api/hostess/update/${this.customerId}`,
+            this.hostess
           )
           .then((response) => {
             console.log(response.data);
